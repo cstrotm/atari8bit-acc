@@ -408,38 +408,22 @@ end
   $20 buf $80 + 30 + c! ( space )
   1+  dup @ buf $80 + 31 + swap 0 &.   ( Length )
   buf $80 + 31 + dup 7 + swap 3 cmove>
-<<<<<<< HEAD
-( 3 +  dup @ .$ space )  ( Start Sector )
-=======
  ( 3 +  dup @ .$ space )  ( Start Sector )
->>>>>>> dec7cc1f61300fe6ae72c485691721afb02dce55
   4 +  dup buf $80 + 18 +  8 cmove     ( Filename )
   8 +      buf $80 + 27 +  3 cmove     ( Extender )
        $2e buf $80 + 26 + c!           ( . )
 
-<<<<<<< HEAD
-# buf $80 + 35 type cr
-=======
-
  (  buf $80 + 35 type cr )
->>>>>>> dec7cc1f61300fe6ae72c485691721afb02dce55
 
   cnt @
   preparesio s2ucmd
   $13 dcmnd c!
   dup 1 >> daux !                   # no of 64byte blocks
   $07 dtimlo c!
-<<<<<<< HEAD
   48 buf $80 + c!                   # laenge des Records
   1 and if 32 else 0 then buf $80 + 1+ c! # offset
   buf $80 +  2 + 15 erase
   buf $80 + 34 + 13 $20 fill
-=======
-  48 buf $80 + c!		    # laenge des Records
-  1 and if 32 else 0 then buf $80 + 1+ c! # offset
-  buf $80 +  2 + 15 erase
-  buf $80 + 34 + 13 erase
->>>>>>> dec7cc1f61300fe6ae72c485691721afb02dce55
   $0A0D buf $80 + 47 + !
   buf $80 + dbuf !
   writecmd
@@ -458,11 +442,7 @@ end
     sector @ readsec drop
     0 i !
     {
-<<<<<<< HEAD
- #    i @ .$ cr
-=======
     (  i @ .$ cr )
->>>>>>> dec7cc1f61300fe6ae72c485691721afb02dce55
       i @ writedirentry
       i ++
       i @ 8 = if break then
@@ -470,11 +450,7 @@ end
     sector @ 368 = if break then
   }
 
-<<<<<<< HEAD
-# 22 2 at " press key" disp key drop
-=======
  ( 22 2 at " press key" disp key drop )
->>>>>>> dec7cc1f61300fe6ae72c485691721afb02dce55
 ;
 
 : maketxtfile
