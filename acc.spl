@@ -583,7 +583,7 @@ end
 
 : nextside
   1 side ctoggle
-  side @ if 65 else 66 then dpath dup c@ + 4 - c!
+  side c@ if 65 else 66 then dpath dup c@ + 4 - c!
 ;
 
 : sidetgl_switch
@@ -953,7 +953,7 @@ end
   stcompleted dispspace cr cr stnextcpy dispspace
   autoinc @ if
       sidetgl c@ if
-         side @ if nextside else nextside nextfile then
+         side c@ if nextside else nextside nextfile then
       else
          nextfile
       then
