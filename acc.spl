@@ -414,9 +414,9 @@ end
        $2e buf $80 + 26 + c!           ( . )
 
   13 {  ( length filename )
-    dup buf $80 + 18 + + c@      ( get char    )
+    dup buf $80 + 17 + + c@      ( get char    )
     $7F and                      ( mask msb    )
-    dup buf $80 + 18 + + c!      ( store char  )
+    dup buf $80 + 17 + + c!      ( store char  )
     1 -                          ( next char   )
     dup 0if drop break then
   }
