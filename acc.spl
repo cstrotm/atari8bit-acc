@@ -413,10 +413,12 @@ end
   8 +      buf $80 + 27 +  3 cmove     ( Extender )
        $2e buf $80 + 26 + c!           ( . )
 
-  buf $80 + 18 + i ! {
-    i @ c@ dup $ff = if drop break then ( stop on $FF )
-    $7F and i c!                 ( mask msb    )
-    i ++                         ( next char   )
+  12 i ! {  ( length filename )
+    buf $80 + 18 + i @ + c@      ( get char    )
+    $7F and                      ( mask msb    )
+    buf $80 + 18 + i @ + c!      ( store char  )
+    i --                         ( next char   )
+    i @ 0if break then
   }
  (  buf $80 + 35 type cr )
 
