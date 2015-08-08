@@ -953,7 +953,7 @@ end
   stcompleted dispspace cr cr stnextcpy dispspace
   autoinc @ if
       sidetgl c@ if
-         side c@ if nextside else nextside nextfile then
+         side c@ if nextside nextfile else nextside then
       else
          nextfile
       then
