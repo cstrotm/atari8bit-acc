@@ -647,7 +647,7 @@ end
 
 : printtxtmode
   crsoff 8 31 at "Txt" disp colon
-  txtgen @ if ston else stoff then disp
+  txtgen c@ if ston else stoff then disp
 ;
 
 : incdigit
