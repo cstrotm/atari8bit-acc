@@ -142,7 +142,7 @@ str stfn83 "12345678"
   0 side c!
   0 txtgen c!
   0 sidetgl c!
-  0 fcount !
+  clearfcount
   4 cdigit !
   end@ secbuf !
   $E459 hss2u !
@@ -1064,7 +1064,7 @@ end
              dup $30 - devnm c! printsource getdrvsio
          then
      then
-     dup $45 ( "E" )   = if newname 0 fcount ! printdestination then
+     dup $45 ( "E" )   = if newname clearfcount printdestination then
      dup $53 ( "S" )   = if sidetgl_switch printautoinc printdestination then
      dup $43 ( "C" )   = if sidetgl c@ if nextside  printdestination then then
      dup $41 ( "A" )   = if toggleautoinc printautoinc printdestination then
