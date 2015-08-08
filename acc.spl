@@ -638,9 +638,9 @@ end
 
 : printautoinc
   crsoff 8 2 at stauto disp stincrement disp colon
-  autoinc @ if ston else stoff then disp
+  autoinc c@ if ston else stoff then disp
   8 14 at stdigit disp colon
-  autoinc @ if cdigit @ else 0 then u.
+  autoinc c@ if cdigit @ else 0 then u.
   8 22 at stside disp colon
   sidetgl c@ if ston else stoff then disp
 ;
@@ -951,7 +951,7 @@ end
   clserr stcopy dispspace
   errorcode c@ $80 < if stsuccessfully else stunsuccessfully then dispspace
   stcompleted dispspace cr cr stnextcpy dispspace
-  autoinc @ if
+  autoinc c@ if
       sidetgl c@ if
          side c@ if nextside nextfile else nextside then
       else
