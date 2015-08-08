@@ -582,8 +582,8 @@ end
 ;
 
 : nextside
-  1 side ctoggle
   side c@ if 65 else 66 then dpath dup c@ + 4 - c!
+  1 side ctoggle
 ;
 
 : sidetgl_switch
