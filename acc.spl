@@ -405,23 +405,26 @@ end
   dup @ $80 and if drop exit then
   dup @ $20 and if $2A else $20 then buf $80 + 17 + c!
   $20 buf $80 + 18 + c! ( space )
-  1+  dup @ drop   ( Length )
+  $20 buf $80 + 30 + c! ( space )
+  1+  dup @ buf $80 + 31 + swap 0 &.   ( Length )
+  buf $80 + 31 + dup 7 + swap 3 cmove>
  ( 3 +  dup @ .$ space )  ( Start Sector )
   4 +  dup buf $80 + 18 +  8 cmove     ( Filename )
   8 +      buf $80 + 27 +  3 cmove     ( Extender )
        $2e buf $80 + 26 + c!           ( . )
 
 
-  buf $80 + 31 type cr
+ (  buf $80 + 35 type cr )
 
   cnt @
   preparesio s2ucmd
   $13 dcmnd c!
   dup 1 >> daux !                   # no of 64byte blocks
   $07 dtimlo c!
-  48 buf $80 + c!
+  48 buf $80 + c!		    # laenge des Records
   1 and if 32 else 0 then buf $80 + 1+ c! # offset
   buf $80 +  2 + 15 erase
+  buf $80 + 34 + 13 erase
   $0A0D buf $80 + 47 + !
   buf $80 + dbuf !
   writecmd
@@ -440,7 +443,7 @@ end
     sector @ readsec drop
     0 i !
     {
-      i @ .$ cr
+    (  i @ .$ cr )
       i @ writedirentry
       i ++
       i @ 8 = if break then
@@ -448,7 +451,7 @@ end
     sector @ 368 = if break then
   }
 
-  22 2 at " press key" disp key drop
+ ( 22 2 at " press key" disp key drop )
 ;
 
 : maketxtfile
@@ -935,13 +938,6 @@ end
   11 12 rcls
   getstatus drop 11 2 at printstatus
   getpercom drop 14 2 at printpercom
-;
-
-: type ( caddr u -- )
-  {
-    swap dup c@ emit 1+ swap 1-
-    dup 0 = if drop drop break then
-  }
 ;
 
 : printdirentry
