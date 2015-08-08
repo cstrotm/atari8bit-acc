@@ -1044,7 +1044,8 @@ end
    ( crsoff key crsoff )
      crsoff
      {
-       chkey c@ $FF = if
+	0 $4d c! ( ATTRACT Mode reset )
+	chkey c@ $FF = if
          consol c@ 6 = if ( [START] )
            $47 ( Simulate G press )
            break
