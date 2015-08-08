@@ -413,15 +413,13 @@ end
   8 +      buf $80 + 27 +  3 cmove     ( Extender )
        $2e buf $80 + 26 + c!           ( . )
 
-  i @       ( save i )
-  12 i ! {  ( length filename )
-    buf $80 + 18 + i @ + c@      ( get char    )
+  12 {  ( length filename )
+    dup buf $80 + 18 + + c@      ( get char    )
     $7F and                      ( mask msb    )
-    buf $80 + 18 + i @ + c!      ( store char  )
-    i --                         ( next char   )
-    i @ 0if break then
+    dup buf $80 + 18 + + c!      ( store char  )
+    1 -                          ( next char   )
+    dup 0if drop break then
   }
-  i !   ( restore i )
   
  (  buf $80 + 35 type cr )
 
